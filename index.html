@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="reset.css" />
+
+		<!-- GOOGLE FONTS -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>Pasgen | Password Generator</title>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Pasgen</h1>
+				<a href="#generator">Go to generator</a>
+			</header>
+
+			<div class="hero-page">
+				<div class="animation-section"></div>
+				<div class="title-section">
+					<h2>
+						Generate secure, random passwords to stay safe online.
+					</h2>
+					<p>Try it out and create your password now!</p>
+				</div>
+			</div>
+
+			<div class="info-page">
+				<h2>What makes a password strong?</h2>
+
+				<ul>
+					<li>
+						<h3>Strong passwords are unique and random.</h3>
+						<p>
+							Humans aren’t very good at coming up with passwords
+							that are either of those things, let alone both. So
+							we created the 1Password Strong Password Generator
+							to create secure, memorable passwords for you. 81%
+							of data breaches are caused by reused or weak
+							passwords, so random, unique passwords are your best
+							defense against online threats.
+						</p>
+					</li>
+					<li>
+						<h3>Why should my password be unique?</h3>
+						<p>
+							If you use the same password for both your email
+							account and your bank account login, an attacker
+							only needs to steal one password to get access to
+							both accounts, doubling your exposure. If you've
+							used that same password for 14 different accounts,
+							you're making the attacker's job very, very easy.
+							You can protect yourself by using a generator to
+							create unique passwords that are easy to remember.
+						</p>
+					</li>
+					<li>
+						<h3>Why should my password be random?</h3>
+						<p>
+							Random passwords are hard to guess and harder for
+							computer programs to crack. If there's a discernible
+							pattern, the odds of an attacker using a brute force
+							attack and gaining access to your account goes up
+							exponentially. Random passwords might contain a
+							jumble of unrelated characters, but combining
+							unrelated words also works. That's how the 1Password
+							Strong Password Generator creates passwords that are
+							easy to remember but still cryptographically strong.
+						</p>
+					</li>
+				</ul>
+			</div>
+
+			<div id="generator">
+				<h2>Generate your password!</h2>
+				<input
+					type="text"
+					name="generator"
+					id="generator-input"
+					value="This"
+					disabled
+				/>
+				<button type="button" id="generate-btn">Generate</button>
+				<label for="pass-slider">Length:</label>
+				<input
+					type="range"
+					name="pass-slider"
+					id="pass-slider"
+					min="8"
+					max="30"
+				/>
+				<button type="button" id="copy-btn">Copy password</button>
+			</div>
+		</div>
+	</body>
 </html>
