@@ -5,8 +5,12 @@ animationItems.forEach(item => {
 })
 
 function getAnimationText() {
-    let randomChar = Math.floor(Math.random() * (45 - 170 + 1)) + 170;
     let text = "";
+    
+    for (let i = 0; i < 7; i++) {
+        let randomChar = Math.floor(Math.random() * (35 - 120 + 1)) + 120;
+        text += String.fromCharCode(randomChar);
+    }
 
-    // TODO: RETURN 5 RANDOM LETTERS TOGETHER WITH ARRAY
+    return text;
 }
