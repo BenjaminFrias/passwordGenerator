@@ -1,8 +1,10 @@
 /* MAIN */
 
 :root {
-	--main-color: #1624eb;
-	--secondary-color: #20491b;
+	--secondary-color: #175ddc;
+	--main-color: #20491b;
+	--charcoal: #141414;
+	--white: #fff;
 }
 
 /* CONTAINER */
@@ -19,15 +21,37 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px;
-	position: sticky;
+	position: fixed;
+	z-index: 1;
 	top: 0;
 	width: 100%;
 	height: 10vh;
-	background: rgb(255, 255, 255);
+
+	/* Blur background */
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(7.7px);
+	-webkit-backdrop-filter: blur(7.7px);
+}
+
+header,
+header h1,
+header.colored,
+header h1.colored {
+	transition: all 400ms ease-in-out;
+}
+
+header.colored {
+	transition: all 400ms ease-in-out;
+	background: rgba(32, 73, 27, 0.7);
+}
+
+header.colored a {
+	color: var(--white);
 }
 
 header h1 {
-	color: var(--main-color);
+	color: var(--white);
 	font-size: clamp(1rem, 5vw, 2rem);
 }
 
@@ -36,26 +60,30 @@ header a {
 	color: var(--main-color);
 }
 
+header a:hover {
+	text-decoration: underline 2px;
+}
+
 /* HERO */
 
 .hero-page {
 	display: flex;
 	max-width: 100%;
-	height: 90vh;
-	background: white;
+	height: 100vh;
+	background: var(--white);
 }
 
 .animation-section {
 	flex: 55%;
 	display: flex;
 	flex-direction: column;
-	background: var(--secondary-color);
+	background: var(--main-color);
 	overflow: hidden;
 }
 
 .title-section {
 	flex: 45%;
-	padding: 20px;
+	padding: 35px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -71,13 +99,15 @@ header a {
 }
 
 .title-section h2 {
-	color: var(--main-color);
+	color: var(--charcoal);
 	font-weight: 900;
+	font-size: clamp(1rem, 8vw, 4rem);
+	line-height: normal;
 }
 
 .title-section p {
 	font-size: clamp(1rem, 3vw, 1.5rem);
-	color: var(--secondary-color);
+	color: var(--main-color);
 }
 
 /* ANIMATION ITEMS */
@@ -89,7 +119,7 @@ header a {
 	width: 50%;
 	position: relative;
 	left: -100%;
-	color: white;
+	color: var(--white);
 	font-size: clamp(10%, 10vw, 4.5rem);
 }
 
@@ -105,6 +135,7 @@ header a {
 .animation-section .animation-item p {
 	margin: 0;
 	padding: 0;
+	font-weight: 600;
 }
 
 .animation-section .animation-item.item-1 {
@@ -125,4 +156,74 @@ header a {
 
 .animation-section .animation-item.item-5 {
 	animation: slide 12s 1s ease-out infinite;
+}
+
+/* INFO PAGE */
+
+.info-title-band {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+}
+
+.info-title-band h2 {
+	color: var(--charcoal);
+	font-size: clamp(1.2rem, 15vw, 4rem);
+	font-weight: 900;
+}
+
+.info-points {
+	min-height: 70vh;
+	padding: 0px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.info-points ul {
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+	background: var(--secondary-color);
+	padding: 40px;
+	border-radius: 35px;
+	list-style: none;
+}
+
+.info-points li {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	background: var(--white);
+	border-radius: 25px;
+	padding: 30px;
+	overflow: hidden;
+	transition: all 200ms ease-in-out;
+}
+
+.info-points li:hover {
+	transition: all 200ms ease-in-out;
+	scale: 1.02;
+}
+
+.info-points h3 {
+	font-size: clamp(1.2rem, 5vw, 2.5rem);
+}
+
+.info-points p.hide {
+	top: 100%;
+}
+
+.info-points p {
+	position: relative;
+	top: 0%;
+}
+
+.info-points li .icon-1 {
+	width: 100%;
+	height: 100px;
+	color: red;
+	background: red;
 }
