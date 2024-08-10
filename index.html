@@ -161,23 +161,53 @@
 
 			<div id="generator">
 				<h2>Generate your password!</h2>
-				<input
-					type="text"
-					name="generator"
-					id="generator-input"
-					value="This"
-					disabled
-				/>
+				<button id="generator-result">asdf33j@</button>
 				<button type="button" id="generate-btn">Generate</button>
-				<label for="pass-slider">Length:</label>
-				<input
-					type="range"
-					name="pass-slider"
-					id="pass-slider"
-					min="8"
-					max="30"
-				/>
 				<button type="button" id="copy-btn">Copy password</button>
+				<label for="pass-slider" class="range-label"
+					>Length:
+					<input
+						type="range"
+						name="pass-slider"
+						id="pass-slider"
+						min="8"
+						max="30"
+					/>
+				</label>
+				<div class="checkboxes">
+					<label for="pass-options">
+						<input
+							type="checkbox"
+							name="az-option"
+							id="az-checkbox"
+						/>
+						a-z
+					</label>
+					<label for="pass-options">
+						<input
+							type="checkbox"
+							name="AZ-option"
+							id="AZ-checkbox"
+						/>
+						A-Z
+					</label>
+					<label for="pass-options">
+						<input
+							type="checkbox"
+							name="numbers-option"
+							id="numbers-checkbox"
+						/>
+						0-9
+					</label>
+					<label for="pass-options">
+						<input
+							type="checkbox"
+							name="special-option"
+							id="special-checkbox"
+						/>
+						!@#$%^&*
+					</label>
+				</div>
 			</div>
 		</div>
 
