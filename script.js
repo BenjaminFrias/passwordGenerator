@@ -2,6 +2,17 @@ let animationItems = document.querySelectorAll(".animation-item p");
 let headerTitle = document.querySelector("header h1");
 let header = document.querySelector("header");
 
+// Set range to 0
+const rangeInput = document.getElementById("pass-slider");
+const rangeValue = document.querySelector(".range-label p span");
+rangeInput.value = 8;
+
+rangeInput.addEventListener("input", () => {
+	rangeValue.textContent = rangeInput.value;
+});
+
+// Show range value
+
 let intervals = [];
 startAnimationPassword();
 let isRunning = true;

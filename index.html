@@ -159,54 +159,60 @@
 				</div>
 			</div>
 
-			<div id="generator">
-				<h2>Generate your password!</h2>
-				<button id="generator-result">asdf33j@</button>
-				<button type="button" id="generate-btn">Generate</button>
-				<button type="button" id="copy-btn">Copy password</button>
-				<label for="pass-slider" class="range-label"
-					>Length:
-					<input
-						type="range"
-						name="pass-slider"
-						id="pass-slider"
-						min="8"
-						max="30"
-					/>
-				</label>
-				<div class="checkboxes">
-					<label for="pass-options">
-						<input
-							type="checkbox"
-							name="az-option"
-							id="az-checkbox"
-						/>
-						a-z
+			<div class="generator-container">
+				<div id="generator">
+					<h2>Generate your password!</h2>
+					<button id="generator-result">asdf33j@</button>
+					<button type="button" id="generate-btn">Generate</button>
+					<button type="button" id="copy-btn">Copy password</button>
+					<label for="pass-slider" class="range-label">
+						<p>Length: <span>8</span></p>
+						<div class="range-container">
+							<p>8</p>
+							<input
+								type="range"
+								name="pass-slider"
+								id="pass-slider"
+								min="8"
+								max="20"
+							/>
+							<p>20</p>
+						</div>
 					</label>
-					<label for="pass-options">
-						<input
-							type="checkbox"
-							name="AZ-option"
-							id="AZ-checkbox"
-						/>
-						A-Z
-					</label>
-					<label for="pass-options">
-						<input
-							type="checkbox"
-							name="numbers-option"
-							id="numbers-checkbox"
-						/>
-						0-9
-					</label>
-					<label for="pass-options">
-						<input
-							type="checkbox"
-							name="special-option"
-							id="special-checkbox"
-						/>
-						!@#$%^&*
-					</label>
+					<div class="checkboxes">
+						<label for="lowercase-option">
+							<input
+								type="checkbox"
+								name="lowercase-option"
+								id="lowercase-option"
+							/>
+							Lowercase
+						</label>
+						<label for="uppercase-option">
+							<input
+								type="checkbox"
+								name="uppercase-option"
+								id="uppercase-option"
+							/>
+							Uppercase
+						</label>
+						<label for="numbers-option">
+							<input
+								type="checkbox"
+								name="numbers-option"
+								id="numbers-option"
+							/>
+							Numbers
+						</label>
+						<label for="symbols-option">
+							<input
+								type="checkbox"
+								name="symbols-option"
+								id="symbols-option"
+							/>
+							Symbols
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
