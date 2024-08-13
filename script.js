@@ -1,17 +1,69 @@
-let animationItems = document.querySelectorAll(".animation-item p");
-let headerTitle = document.querySelector("header h1");
-let header = document.querySelector("header");
+const animationItems = document.querySelectorAll(".animation-item p");
+const headerTitle = document.querySelector("header h1");
+const header = document.querySelector("header");
+const passwordResult = document.querySelector("#generator-result");
 
 // Set range to 0
 const rangeInput = document.getElementById("pass-slider");
-const rangeValue = document.querySelector(".range-label p span");
+const rangeValueText = document.querySelector(".range-label p span");
 rangeInput.value = 8;
 
 rangeInput.addEventListener("input", () => {
-	rangeValue.textContent = rangeInput.value;
+	rangeValueText.textContent = rangeInput.value;
+
+	// Generate password and show it when input
+	passwordResult.textContent = generatePassword(rangeInput.value);
 });
 
-// Show range value
+// GENERATE PASSWORD
+
+// Password options
+const options = document.querySelectorAll("input[type='checkbox']");
+
+const lowercase = "abcdefghijklmnopqrstuvwxyz";
+const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbers = "0123456789";
+const symbols = "!@#$%^&*()_+";
+
+function generatePassword(length) {
+	let usableCharacters = "";
+
+	// CHECK FOR OPTIONS
+
+	// Lowercase option
+	if (options[0].checked) {
+		usableCharacters += lowercase;
+	}
+	// Uppercase option
+	if (options[1].checked) {
+		usableCharacters += uppercase;
+	}
+	// Numbers option
+	if (options[2].checked) {
+		usableCharacters += numbers;
+	}
+	// Symbols option
+	if (options[3].checked) {
+		usableCharacters += symbols;
+	}
+
+	// GENERATE PASSWORD
+
+	let password = "";
+	for (let i = 0; i < length; i++) {
+		let randomChar =
+			usableCharacters[
+				Math.floor(Math.random() * usableCharacters.length)
+			];
+		password += randomChar;
+	}
+
+	return password;
+}
+
+generatePassword(8);
+
+// ANIMATION SECTION
 
 let intervals = [];
 startAnimationPassword();
@@ -54,7 +106,7 @@ function tooglePasswordAnimation(positionY) {
 function getAnimationText() {
 	let text = "";
 
-	// Generate random lenght of random chars
+	// Generate random length of random chars
 	for (let i = 0; i < Math.floor(Math.random() * (3 - 9 + 1)) + 9; i++) {
 		let randomChar = Math.floor(Math.random() * (35 - 120 + 1)) + 120;
 		text += String.fromCharCode(randomChar);

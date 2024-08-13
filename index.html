@@ -65,7 +65,7 @@
 
 			<div class="info-page">
 				<div class="info-title-band">
-					<h2>What makes a password strong?</h2>
+					<h2>How to create a strong password?</h2>
 				</div>
 
 				<div class="info-points">
@@ -162,7 +162,7 @@
 			<div class="generator-container">
 				<div id="generator">
 					<h2>Generate your password!</h2>
-					<button id="generator-result">asdf33j@</button>
+					<button id="generator-result"></button>
 					<button type="button" id="generate-btn">Generate</button>
 					<button type="button" id="copy-btn">Copy password</button>
 					<label for="pass-slider" class="range-label">
@@ -185,6 +185,7 @@
 								type="checkbox"
 								name="lowercase-option"
 								id="lowercase-option"
+								checked
 							/>
 							Lowercase
 						</label>
@@ -193,6 +194,7 @@
 								type="checkbox"
 								name="uppercase-option"
 								id="uppercase-option"
+								checked
 							/>
 							Uppercase
 						</label>
@@ -201,6 +203,7 @@
 								type="checkbox"
 								name="numbers-option"
 								id="numbers-option"
+								checked
 							/>
 							Numbers
 						</label>
@@ -209,6 +212,8 @@
 								type="checkbox"
 								name="symbols-option"
 								id="symbols-option"
+								aria-details="symbols"
+								checked
 							/>
 							Symbols
 						</label>
