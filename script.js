@@ -3,11 +3,12 @@ const headerTitle = document.querySelector("header h1");
 const header = document.querySelector("header");
 const passwordResult = document.querySelector("#generator-result");
 
-// Set range to 0
+// Set range to 0%
 const rangeInput = document.getElementById("pass-slider");
 const rangeValueText = document.querySelector(".range-label p span");
 rangeInput.value = 8;
 
+// Change password when slider input change
 rangeInput.addEventListener("input", () => {
 	rangeValueText.textContent = rangeInput.value;
 
@@ -15,7 +16,7 @@ rangeInput.addEventListener("input", () => {
 	passwordResult.textContent = generatePassword(rangeInput.value);
 });
 
-// GENERATE PASSWORD
+// GENERATE PASSWORD SECTION
 
 // Password options
 const options = document.querySelectorAll("input[type='checkbox']");
@@ -61,7 +62,26 @@ function generatePassword(length) {
 	return password;
 }
 
-generatePassword(8);
+passwordResult.textContent = generatePassword(rangeInput.value);
+
+// Generate button
+const generateBtn = document.querySelector("#generate-btn");
+generateBtn.addEventListener("click", () => {
+	passwordResult.textContent = generatePassword(rangeInput.value);
+});
+
+// Copy password
+const copyButton = document.querySelector("#copy-btn");
+
+copyButton.addEventListener("click", () => {
+	navigator.clipboard.writeText(passwordResult.textContent);
+	copyButton.textContent = "Copied!";
+	copyButton.classList.add("copied");
+	setTimeout(() => {
+		copyButton.textContent = "Copy";
+		copyButton.classList.remove("copied");
+	}, 2000);
+});
 
 // ANIMATION SECTION
 
