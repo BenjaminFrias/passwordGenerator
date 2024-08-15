@@ -18,7 +18,6 @@ rangeInput.addEventListener("input", () => {
 
 // GENERATE PASSWORD SECTION
 
-// Password options
 const options = document.querySelectorAll("input[type='checkbox']");
 
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -82,6 +81,33 @@ copyButton.addEventListener("click", () => {
 		copyButton.classList.remove("copied");
 	}, 2000);
 });
+
+// Have at least one checkbox active
+
+// Create a array of checked options and call function
+options.forEach((option) => {
+	option.addEventListener("change", () => {
+		checkOptions();
+	});
+});
+
+function checkOptions() {
+	let checkedOptions = [];
+	options.forEach((option) => {
+		if (option.checked) {
+			checkedOptions.push(option);
+		}
+	});
+
+	if (checkedOptions.length == 1) {
+		checkedOptions[0].setAttribute("disabled", true);
+	}
+	if (checkedOptions.length > 1) {
+		checkedOptions.forEach((opt) => {
+			opt.removeAttribute("disabled");
+		});
+	}
+}
 
 // ANIMATION SECTION
 
