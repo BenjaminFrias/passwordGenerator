@@ -2,19 +2,12 @@ const animationItems = document.querySelectorAll(".animation-item p");
 const headerTitle = document.querySelector("header h1");
 const header = document.querySelector("header");
 const passwordResult = document.querySelector("#generator-result");
+const passwordStrenghtSpan = document.querySelector("#check-password span");
 
 // Set range to 0%
 const rangeInput = document.getElementById("pass-slider");
 const rangeValueText = document.querySelector(".range-label p span");
-rangeInput.value = 8;
-
-// Change password when slider input change
-rangeInput.addEventListener("input", () => {
-	rangeValueText.textContent = rangeInput.value;
-
-	// Generate password and show it when input
-	passwordResult.textContent = generatePassword(rangeInput.value);
-});
+rangeInput.value = 6;
 
 // GENERATE PASSWORD SECTION
 
@@ -24,6 +17,7 @@ const lowercase = "abcdefghijklmnopqrstuvwxyz";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+";
+let current_password = "";
 
 function generatePassword(length) {
 	let usableCharacters = "";
@@ -58,8 +52,21 @@ function generatePassword(length) {
 		password += randomChar;
 	}
 
+	passwordStrenghtSpan.textContent = checkPasswordStrength(password);
+
+	current_password = password;
 	return password;
 }
+
+current_password = generatePassword(rangeInput.value);
+
+// Change password when slider input change
+rangeInput.addEventListener("input", () => {
+	rangeValueText.textContent = rangeInput.value;
+
+	// Generate password and show it when input
+	passwordResult.textContent = generatePassword(rangeInput.value);
+});
 
 passwordResult.textContent = generatePassword(rangeInput.value);
 
@@ -106,6 +113,41 @@ function checkOptions() {
 		checkedOptions.forEach((opt) => {
 			opt.removeAttribute("disabled");
 		});
+	}
+}
+
+// Check password security level
+
+function checkPasswordStrength(current_password) {
+	const passwordLength = current_password.length;
+	const hasLowercase = /[a-z]/.test(current_password);
+	const hasUppercase = /[A-Z]/.test(current_password);
+	const hasNumber = /[0-9]/.test(current_password);
+	const hasSpecialChar = /[!@#$%^&*()_+]/g.test(current_password);
+
+	if (
+		passwordLength >= 17 &&
+		hasLowercase &&
+		hasUppercase &&
+		hasNumber &&
+		hasSpecialChar
+	) {
+		return "Very strong password";
+	} else if (
+		passwordLength >= 10 &&
+		hasLowercase &&
+		hasUppercase &&
+		hasNumber &&
+		hasSpecialChar
+	) {
+		return "Strong password";
+	} else if (
+		passwordLength >= 8 &&
+		(hasLowercase || hasUppercase || hasNumber)
+	) {
+		return "Medium password";
+	} else {
+		return "Weak password";
 	}
 }
 
