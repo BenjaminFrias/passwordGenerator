@@ -1,4 +1,9 @@
-const animationItems = document.querySelectorAll(".animation-item p");
+import {
+	startAnimationPassword,
+	tooglePasswordAnimation,
+	getAnimationText,
+} from "./animation.js";
+
 const headerTitle = document.querySelector("header h1");
 const header = document.querySelector("header");
 const passwordResult = document.querySelector("#generator-result");
@@ -152,24 +157,14 @@ function checkPasswordStrength(current_password) {
 }
 
 // ANIMATION SECTION
-
-let intervals = [];
-startAnimationPassword();
-let isRunning = true;
-function startAnimationPassword() {
-	animationItems.forEach((item) => {
-		const interval = setInterval(() => {
-			item.textContent = getAnimationText();
-		}, 200);
-		intervals.push(interval);
-	});
-}
+export const animationItems = document.querySelectorAll(".animation-item p");
+startAnimationPassword(animationItems);
 
 window.addEventListener("scroll", () => {
-	let scrollY = this.scrollY;
+	let scrollY = window.scrollY;
 
 	// Toogle passwords animation when user pass page
-	tooglePasswordAnimation();
+	tooglePasswordAnimation(scrollY);
 
 	// Toogle header title color with class
 	if (scrollY > 550) {
@@ -178,27 +173,3 @@ window.addEventListener("scroll", () => {
 		header.classList.remove("colored");
 	}
 });
-
-function tooglePasswordAnimation(positionY) {
-	if (scrollY < 600 && !isRunning) {
-		startAnimationPassword();
-		isRunning = true;
-	} else if (scrollY > 600 && scrollY < 650) {
-		intervals.forEach((int) => {
-			clearInterval(int);
-		});
-		isRunning = false;
-	}
-}
-
-function getAnimationText() {
-	let text = "";
-
-	// Generate random length of random chars
-	for (let i = 0; i < Math.floor(Math.random() * (3 - 9 + 1)) + 9; i++) {
-		let randomChar = Math.floor(Math.random() * (35 - 120 + 1)) + 120;
-		text += String.fromCharCode(randomChar);
-	}
-
-	return text;
-}
